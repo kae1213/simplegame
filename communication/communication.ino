@@ -2,7 +2,8 @@
 #define BUTTON1_RIGHT 3
 
 int x;
-bool input_flag;
+bool input_flag = false;
+bool input2_flag = false;
 
 void setup() {
  Serial.begin(115200);
@@ -12,19 +13,21 @@ void setup() {
  pinMode(BUTTON1_RIGHT, INPUT_PULLUP);
  
  attachInterrupt(digitalPinToInterrupt(BUTTON1_LEFT), service_input1, LOW);
- attachInterrupt(digitalPinToInterrupt(BUTTON1_RIGHT), service_input1, LOW);
+ attachInterrupt(digitalPinToInterrupt(BUTTON1_RIGHT), service_input2, LOW);
 
 }
 
 void loop() {
- while (!Serial.available());
- x = Serial.readString().toInt();
- Serial.print(x + 1);
- Serial.print("Hello");
 
  if (input_flag){
-  Serial.print("Hello This was a button press");
-  input_flag = !input_flag;
+  x = 100;
+  Serial.print(x);
+  input_flag = false;
+ }
+ if (input2_flag){
+  x = 111;
+  Serial.print(x);
+  input2_flag = false;
  }
 
 
@@ -39,7 +42,20 @@ void service_input1() {
   {
     // do yo thangggg!
     input_flag = true;
-    Serial.print("Hello This was a button press");
+    //Serial.print("Hello This was a button press");
+  }
+  last_interrupt_time = interrupt_time;
+}
+
+void service_input2() {
+  static unsigned long last_interrupt_time = 0;
+  unsigned long interrupt_time = millis();
+  
+  if (interrupt_time - last_interrupt_time > 200) 
+  {
+    // do yo thangggg!
+    input2_flag = true;
+    //Serial.print("Hello This was a button press");
   }
   last_interrupt_time = interrupt_time;
 }
