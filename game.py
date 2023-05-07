@@ -1,8 +1,9 @@
+
 import pygame
 import random
 
 # Initialize Pygame
-#just a new comment
+#just a new comment-iadded
 pygame.init()
 
 # window frame for game containment
