@@ -2,6 +2,9 @@
 #define BUTTON1_RIGHT 3
 
 int x;
+const int LEFT_BUTTON_PRESS = 100;
+const int RIGHT_BUTTON_PRESS = 111;
+
 bool input_flag = false;
 bool input2_flag = false;
 
@@ -20,13 +23,11 @@ void setup() {
 void loop() {
 
  if (input_flag){
-  x = 100;
-  Serial.print(x);
+  Serial.print(LEFT_BUTTON_PRESS);
   input_flag = false;
  }
  if (input2_flag){
-  x = 111;
-  Serial.print(x);
+  Serial.print(RIGHT_BUTTON_PRESS);
   input2_flag = false;
  }
 
