@@ -50,7 +50,9 @@ arduino1 = communication.connect_to_controller()
 
 while is_game_running:
     # Handle events
-    value_str = arduino1.readline().decode('utf-8').rstrip()
+    #value_str = arduino1.readline().decode('utf-8').rstrip()
+    value_str = int(arduino1.readline().decode('utf-8').rstrip())
+
     print(type(value_str))
     if (value_str):
         communication.button_state(value_str, left_button_pressed, right_button_pressed)
