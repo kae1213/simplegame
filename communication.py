@@ -1,4 +1,3 @@
-# way of using PySerial
 import serial
 import time
 #CHECK THIS OUT MAY HELP
@@ -7,32 +6,18 @@ import time
 left_button_pressed = False
 right_button_pressed = False
 
-# arduino = serial.Serial(port='COM3', baudrate=115200, timeout=.1)
-# arduino.flush()
-
-def button_state(value_hold, left_button_pressed, right_button_pressed):
-    if (value_hold == "100"):
+def button_state(value_hold):
+    if (value_hold == '0'):
         print("Received value:", value_hold)
-        left_button_pressed = True
+        #left_button_pressed = True
+        return True, False
 
-    elif (value_hold == "111"):
+    elif (value_hold == '1'):
         print("Received value:", value_hold)
-        right_button_pressed = True
+        return False, True
 
     else:
         print("Invalid")
-
-def return_button_state(button_state):
-    button_state = False
-
-#while True:
-
-# Whenever a interrupt is triggered, it will them get the pre-assigned int and then check if nonempty to print
-    # value_str = arduino.readline().decode('utf-8').rstrip()
-    # if (value_str):
-    #     button_state(value_str)
-    
-
 
 def connect_to_controller():
     arduino = serial.Serial(port='COM3', baudrate=115200, timeout=.1)
@@ -44,13 +29,12 @@ def get_controller_inputs(arduino):
     if (value_str):
         button_state(value_str)
 
-def enable_controller():#will not use, this will stay stuck checking while loop
+def enable_controller():#will not use, this will stay stuck checking while loop, but first iteration
     arduino = serial.Serial(port='COM3', baudrate=115200, timeout=.1)
     arduino.flush()
     
     while True:
-
-# Whenever a interrupt is triggered, it will them get the pre-assigned int and then check if nonempty to print
+    # Whenever a interrupt is triggered, it will them get the pre-assigned int and then check if nonempty to print
         value_str = arduino.readline().decode('utf-8').rstrip()
         if (value_str):
             button_state(value_str)

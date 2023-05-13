@@ -2,15 +2,15 @@
 #define BUTTON1_RIGHT 3
 
 int x;
-const int LEFT_BUTTON_PRESS = 100;
-const int RIGHT_BUTTON_PRESS = 111;
+const char LEFT_BUTTON_PRESS = '0';
+const char RIGHT_BUTTON_PRESS = '1';
 
 bool input_flag = false;
 bool input2_flag = false;
 
 void setup() {
- Serial.begin(115200);
- Serial.setTimeout(1);
+ Serial.begin(9600);
+ //Serial.setTimeout(1);
 
  pinMode(BUTTON1_LEFT, INPUT_PULLUP);
  pinMode(BUTTON1_RIGHT, INPUT_PULLUP);
@@ -39,11 +39,10 @@ void service_input1() {
   static unsigned long last_interrupt_time = 0;
   unsigned long interrupt_time = millis();
   
-  if (interrupt_time - last_interrupt_time > 200) 
+  if (interrupt_time - last_interrupt_time > 50) 
   {
     // do yo thangggg!
     input_flag = true;
-    //Serial.print("Hello This was a button press");
   }
   last_interrupt_time = interrupt_time;
 }
@@ -52,11 +51,11 @@ void service_input2() {
   static unsigned long last_interrupt_time = 0;
   unsigned long interrupt_time = millis();
   
-  if (interrupt_time - last_interrupt_time > 200) 
+  if (interrupt_time - last_interrupt_time > 50) 
   {
     // do yo thangggg!
     input2_flag = true;
-    //Serial.print("Hello This was a button press");
   }
   last_interrupt_time = interrupt_time;
 }
+
