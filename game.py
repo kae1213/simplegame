@@ -23,7 +23,7 @@ player_1_height = 50
 # Used for actual game visuals on the screen
 player_1_x = screen_width / 2 - player_1_width / 2
 player_1_y = screen_height - player_1_height
-player_1_speed = 5
+player_1_speed = 15
 player_1_color = (255, 255, 0)
 
 # Used to set up the enemy to hit the player
@@ -42,6 +42,8 @@ pause_font = pygame.font.Font(None, 42)
 # Set up the game loop
 is_game_running = True
 clock = pygame.time.Clock()
+
+# Setting up Arduino Connection
 arduino1 = serial.Serial('COM3', 9600)
 # New code here to handle the serial COM
 
