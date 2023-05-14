@@ -3,18 +3,19 @@ import time
 #CHECK THIS OUT MAY HELP
 #link: https://forum.arduino.cc/t/reading-an-int-value-from-arduino-with-pyserial/92776
 
-left_button_pressed = False
-right_button_pressed = False
-
 def button_state(value_hold):
     if (value_hold == '0'):
         print("Received value:", value_hold)
         #left_button_pressed = True
-        return True, False
+        return True, False, False
 
     elif (value_hold == '1'):
         print("Received value:", value_hold)
-        return False, True
+        return False, True, False
+    
+    elif (value_hold == 'A'):
+        print("Received value:", value_hold)
+        return False, False, True
 
     else:
         print("Invalid")
