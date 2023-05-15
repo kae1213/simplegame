@@ -2,37 +2,34 @@ import pygame
 import random
 import communication
 import serial
-
+#
+#
+#
+#
 # Initialize pygame
 pygame.init()
 
 # Set up the screen
-screen_width = 640
-screen_height = 480
+screen_width = 800
+screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Space Invaders from Wish")
 
 # Set up the clock
 clock = pygame.time.Clock()
 
-# Set up the player
+# Set up the single player
 player_image = pygame.image.load("assets/player.png")
 player_width = 64
 player_height = 64
-player_x = (screen_width - player_width) // 2
-player_y = screen_height - player_height - 10
+player_x_position = (screen_width - player_width) // 2
+player_y_position = screen_height - player_height - 10
 player_speed = 15
 
+#Player Controls
 left_button_press_spaceGame = False
 right_button_press_spaceGame = False
 attack_button_press_spaceGame = False
-
-# Set up the bullets
-bullet_image = pygame.image.load("assets/bullet.png")
-bullet_width = 16
-bullet_height = 32
-bullet_speed = 10
-bullet_list = []
 
 # Set up the enemies
 enemy_image = pygame.image.load("assets/enemy.png")
@@ -45,12 +42,20 @@ for i in range(5):
     enemy_y = random.randint(-200, -enemy_height)
     enemy_list.append((enemy_x, enemy_y))
 
+# Set up the bullets
+bullet_image = pygame.image.load("assets/bullet.png")
+bullet_width = 16
+bullet_height = 32
+bullet_speed = 10
+bullet_list = []
+
 ### Set Up Connection to Arduino ###
 arduino1 = serial.Serial('COM3', 9600)
 
-
 # Set up the game loop
 running = True
+
+# Game logic to start
 while running:
     if arduino1.in_waiting > 0:
         # read data from serial connection
@@ -66,23 +71,23 @@ while running:
             running = False
         # elif event.type == pygame.KEYDOWN:
         #     if event.key == pygame.K_SPACE:
-        #         bullet_x = player_x + (player_width - bullet_width) // 2
-        #         bullet_y = player_y - bullet_height
+        #         bullet_x = player_x_position + (player_width - bullet_width) // 2
+        #         bullet_y = player_y_position - bullet_height
         #         bullet_list.append((bullet_x, bullet_y))
         #         attack_button_press_spaceGame = False
 
     # Handle player movement and bullet attack
-    if left_button_press_spaceGame and player_x > 0:
-        player_x -= player_speed
+    if left_button_press_spaceGame and player_x_position > 0:
+        player_x_position -= player_speed
         left_button_press_spaceGame = False
 
-    elif right_button_press_spaceGame and player_x < screen_width - player_width:
-        player_x += player_speed
+    elif right_button_press_spaceGame and player_x_position < screen_width - player_width:
+        player_x_position += player_speed
         right_button_press_spaceGame = False
 
     elif attack_button_press_spaceGame:
-        bullet_x = player_x + (player_width - bullet_width) // 2
-        bullet_y = player_y - bullet_height
+        bullet_x = player_x_position + (player_width - bullet_width) // 2
+        bullet_y = player_y_position - bullet_height
         bullet_list.append((bullet_x, bullet_y))
         attack_button_press_spaceGame = False
 
@@ -135,7 +140,7 @@ while running:
 
     # Draw everything
     screen.fill((0, 0, 0))
-    screen.blit(player_image, (player_x, player_y))
+    screen.blit(player_image, (player_x_position, player_y_position))
     for bullet in bullet_list:
         screen.blit(bullet_image, bullet)
     for enemy in enemy_list:
