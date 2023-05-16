@@ -112,9 +112,7 @@ void service_input3() {
   last_interrupt_time = interrupt_time;
 }
 /***********************************************/
-/***********************************************/
-/***********************************************/
-//New functions
+//Functions for Vortex Game and Button Interrupt
 bool isButtonPressedDebounced() {
   // Read the button pin state
   bool buttonState = digitalRead(VORTEX_BUTTON) == LOW;
