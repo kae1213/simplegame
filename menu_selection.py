@@ -1,6 +1,7 @@
 import sys
 import pygame
 from pygame.locals import *
+import game1_funct
 
 # Init Screen
 pygame.init()
@@ -35,8 +36,8 @@ def display_menu(selected_option):
     # Menu Options
     font = pygame.font.Font(None, 36)
 
-    text1 = font.render("Roblox from Wish", True, (255, 255, 255))
-    text2 = font.render("Space Invaders from Wish", True, (255, 255, 255))
+    text1 = font.render("Block Crasher", True, (255, 255, 255))
+    text2 = font.render("Space Invaders", True, (255, 255, 255))
     text3 = font.render("Vortex", True, (255, 255, 255))
  
     screen.blit(text1, (screen_width/2 - text1.get_width()/2, screen_height/2 - text1.get_height()))
@@ -61,23 +62,12 @@ def display_menu(selected_option):
 def game1():
     selected_option = 1
     print('Selected opt 1')
-    while True:
-        # Game 1 logic
-        #Kelvin: Uncomment for debugging puposes to halt
-        #sys.exit() 
-        for event in pygame.event.get():
-            if event.type == KEYDOWN:
-                if event.key == K_UP:
-                    selected_option = 1
-                elif event.key == K_DOWN:
-                    selected_option = 2
-                elif event.key == K_ESCAPE:
-                    display_menu(selected_option)
-                    print('Selected')
-                    return
-
+    game1_funct.game1Defines.is_game_running = True
+    game1_funct.initGame1()
+    screen = pygame.display.set_mode((screen_width, screen_height))
     display_menu(selected_option)
     #return
+    
 def game2():
     while True:
         print('Selected opt 2')
