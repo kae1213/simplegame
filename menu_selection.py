@@ -2,6 +2,7 @@ import sys
 import pygame
 from pygame.locals import *
 import game1_funct
+import game2_funct
 
 # Init Screen
 pygame.init()
@@ -67,17 +68,24 @@ def game1():
     screen = pygame.display.set_mode((screen_width, screen_height))
     display_menu(selected_option)
     #return
-    
+
 def game2():
-    while True:
-        print('Selected opt 2')
-        sys.exit() 
-        # Game 2 logic
-        for event in pygame.event.get():
-            if event.type == KEYDOWN and event.key == K_ESCAPE:
-                display_menu()
-                print('Selected')
-                return
+    # while True:
+    #     print('Selected opt 2')
+    #     sys.exit() 
+    #     # Game 2 logic
+    #     for event in pygame.event.get():
+    #         if event.type == KEYDOWN and event.key == K_ESCAPE:
+    #             display_menu()
+    #             print('Selected')
+    #             return
+    selected_option = 2
+    print('Selected opt 2')
+    game2_funct.game2Defines.is_game_running = True
+    game2_funct.initGame2()
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    display_menu(selected_option)
+
 def game3():
     while True:
         print('Selected opt 3')

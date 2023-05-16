@@ -22,7 +22,7 @@ def initGame1():
                 game1Defines.is_game_running = False
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
                 if pause_rect.collidepoint(event.pos):
-                    print("Toggle Back")
+                    print("1 Toggle Back")
                     game1Defines.is_game_running = False
                     #menu_selection.display_menu(2)
 

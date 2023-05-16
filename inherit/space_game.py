@@ -53,10 +53,10 @@ bullet_list = []
 arduino1 = serial.Serial('COM3', 9600)
 
 # Set up the game loop
-running = True
+is_space_running = True
 
 # Game logic to start
-while running:
+while is_space_running:
     if arduino1.in_waiting > 0:
         # read data from serial connection
         data = arduino1.read().decode('utf-8')
@@ -68,7 +68,7 @@ while running:
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            is_space_running = False
         # elif event.type == pygame.KEYDOWN:
         #     if event.key == pygame.K_SPACE:
         #         bullet_x = player_x_position + (player_width - bullet_width) // 2
