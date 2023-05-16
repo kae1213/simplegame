@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *
 import game1_funct
 import game2_funct
+import game3_funct
 
 # Init Screen
 pygame.init()
@@ -87,12 +88,9 @@ def game2():
     display_menu(selected_option)
 
 def game3():
-    while True:
-        print('Selected opt 3')
-        sys.exit() 
-        # Game 2 logic
-        for event in pygame.event.get():
-            if event.type == KEYDOWN and event.key == K_ESCAPE:
-                display_menu()
-                print('Selected')
-                return
+    selected_option = 3
+    print('Selected opt 3')
+    game3_funct.game3Defines.is_game_running = True
+    game3_funct.initGame3()
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    display_menu(selected_option)

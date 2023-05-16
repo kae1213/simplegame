@@ -13,7 +13,7 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Roblox from Wish")
+pygame.display.set_caption("Game 1")
 
 #Set Game Clock
 clock = pygame.time.Clock()

@@ -51,7 +51,7 @@ void loop() {
     char charReceived = Serial.read(); // Read the incoming character
     
     // Kelvin: the code here will handle the game based on Arduino
-    if (charReceived == '0') {  // Command received from PC to start the game
+    if (charReceived == 'B') {  // Command received from PC to start the game
       vortex_playing = true;
       play_vortex(vortex_playing);
     }

@@ -28,9 +28,6 @@ def main():
                 # Case once enter is pressed
                     if selected_option == 1:
                         menu_selection.game1()
-                        #Kelvin: ll you can do is minimize the window using 
-                        #pygame.display.iconify()
-                        #menu_selection.display_menu(selected_option)
                     elif selected_option == 2:
                         menu_selection.game2()
                     elif selected_option == 3:
