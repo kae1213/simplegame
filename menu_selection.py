@@ -27,7 +27,7 @@ def display_menu(selected_option):
 
     # Text for Main Title 
     font_title = pygame.font.Font(None, 48)
-    title_text = "!Wish Presents!"
+    title_text = "!Select your Game!"
     title = font_title.render(title_text, True, (255, 255, 255))
     screen.blit(title, (screen_width/2 - title.get_width()/2, 50))
 
@@ -71,15 +71,6 @@ def game1():
     #return
 
 def game2():
-    # while True:
-    #     print('Selected opt 2')
-    #     sys.exit() 
-    #     # Game 2 logic
-    #     for event in pygame.event.get():
-    #         if event.type == KEYDOWN and event.key == K_ESCAPE:
-    #             display_menu()
-    #             print('Selected')
-    #             return
     selected_option = 2
     print('Selected opt 2')
     game2_funct.game2Defines.is_game_running = True

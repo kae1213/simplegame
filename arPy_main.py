@@ -16,13 +16,9 @@ def main():
             if event.type == QUIT:
                 pygame.quit()
             elif event.type == KEYDOWN:
-                #first and second will handle up/down toggle
                 if event.key == K_UP:
-                    #selected_option = 1
                     selected_option = max(1, selected_option - 1)
                 elif event.key == K_DOWN:
-                    #selected_option = 2
-                    #Kelvin: Uncommenting the selected_option 1 and 2 causes weird errors. Maybe only keep one
                     selected_option = min(3, selected_option + 1)
                 elif event.key == K_RETURN:
                 # Case once enter is pressed

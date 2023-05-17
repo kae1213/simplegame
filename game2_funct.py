@@ -24,14 +24,7 @@ def initGame2():
                 if pause_rect.collidepoint(event.pos):
                     print("2 Toggle Back")
                     game2Defines.is_game_running = False
-            
-            # elif event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_SPACE:
-            #         bullet_x = player_x_position + (player_width - bullet_width) // 2
-            #         bullet_y = player_y_position - bullet_height
-            #         bullet_list.append((bullet_x, bullet_y))
-            #         attack_button_press_spaceGame = False
-
+                    
         # Handle player movement and bullet attack
         if game2Defines.left_button_press_spaceGame and game2Defines.player_x_position > 0:
             game2Defines.player_x_position -= game2Defines.player_speed
